@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot RAG - Phishing</title>
+</head>
+<body>
+    <h1>Chatbot sobre Phishing</h1>
+    <form method="post">
+        <label for="question">Pergunta:</label><br>
+        <input type="text" name="question" value="{{ question }}" size="80"><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    {% if response %}
+        <h3>Resposta:</h3>
+        <div style="white-space: pre-wrap; border: 1px solid #ccc; padding: 10px;">{{ response }}</div>
+    {% endif %}
+</body>
+</html>
