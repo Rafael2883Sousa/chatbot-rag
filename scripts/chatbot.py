@@ -1,42 +1,60 @@
+
+# Implementação com o prompt
+
+import subprocess
 from langchain.chains import RetrievalQA
-from langchain.vectorstores import FAISS
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.llms import LlamaCpp
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
+
 import os
 
-MODEL_PATH = "models/llama-2-7b-chat-hf-q4_k_m.gguf"
 VECTOR_DIR = "vectorstore"
-N_CTX = 2048
-MAX_TOKENS = 512
-
-def load_llm():
-    return LlamaCpp(
-        model_path=MODEL_PATH,
-        temperature=0.7,
-        max_tokens=MAX_TOKENS,
-        n_ctx=N_CTX,
-        verbose=True
-    )
+LLAMA_CLI_PATH = r"C:\Users\Benuilson Sousa\Documents\Raf\Seminário Stiven\llama-b5760-bin-win-cpu-x64\llama-cli.exe"  
+MODEL_PATH = r"models\llama-2-7b-chat-hf-q4_k_m.gguf"
 
 def load_vectorstore():
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-    return FAISS.load_local(VECTOR_DIR, embeddings)
+    return FAISS.load_local(VECTOR_DIR, embeddings, allow_dangerous_deserialization=True)
+
+def run_llama_cli(prompt, max_tokens=512):
+    result = subprocess.run(
+        [
+            LLAMA_CLI_PATH,
+            "-m", MODEL_PATH,
+            "-p", prompt,
+            "--n-predict", str(max_tokens),
+            "--ctx-size", "2048",
+        ],
+        capture_output=True,
+        text=True
+    )
+    return result.stdout.strip()
 
 if __name__ == "__main__":
-    print("[*] Iniciando Chatbot RAG com LLaMA + LangChain...")
+    print("[*] Iniciando Chatbot RAG com LLaMA via subprocess + LangChain...")
 
-    llm = load_llm()
     vectorstore = load_vectorstore()
 
-    qa_chain = RetrievalQA.from_chain_type(
-        llm=llm,
-        retriever=vectorstore.as_retriever(),
-        return_source_documents=True
-    )
+    retriever = vectorstore.as_retriever()
 
     while True:
         query = input("\nUsuário: ")
         if query.lower() in ["sair", "exit", "quit"]:
             break
-        resposta = qa_chain.run(query)
+
+        docs = retriever.get_relevant_documents(query)
+        context = "\n".join([doc.page_content for doc in docs[:3]])
+
+        prompt = f"""
+[CONTEXTO]
+{context}
+
+[PERGUNTA]
+{query}
+
+[RESPOSTA]
+"""
+
+        resposta = run_llama_cli(prompt)
         print("\nChatbot:", resposta)
+
