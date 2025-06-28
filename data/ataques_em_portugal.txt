@@ -1,0 +1,3 @@
+
+Em Portugal, ataques de phishing têm aumentado nos últimos anos. Em 2022, houve um pico de campanhas falsas simulando bancos portugueses, como a CGD e o BPI.
+Os ataques visavam principalmente obter dados bancários através de sites falsos.

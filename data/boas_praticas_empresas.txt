@@ -1,0 +1,6 @@
+
+Empresas devem implementar políticas robustas contra phishing:
+- Realizar simulações periódicas;
+- Monitorar logs de e-mail;
+- Sensibilizar todos os departamentos;
+- Estabelecer canais de denúncia seguros e acessíveis.

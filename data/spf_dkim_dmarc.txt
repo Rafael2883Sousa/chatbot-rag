@@ -1,0 +1,5 @@
+
+SPF, DKIM e DMARC são mecanismos de autenticação de e-mails que ajudam a prevenir spoofing e phishing.
+- SPF: verifica se o IP do remetente tem permissão para enviar e-mails em nome do domínio.
+- DKIM: autentica a integridade da mensagem.
+- DMARC: política de aplicação dos dois anteriores.

@@ -1,0 +1,6 @@
+
+Algumas formas de identificar e-mails de phishing incluem:
+- Verificar o domínio do remetente;
+- Desconfiar de erros gramaticais;
+- Evitar clicar em links encurtados ou anexos inesperados;
+- Verificar se o site possui certificado HTTPS.

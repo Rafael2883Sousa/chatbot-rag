@@ -1,0 +1,6 @@
+
+Para se proteger contra phishing:
+- Ative a autenticação de dois fatores;
+- Nunca forneça informações sensíveis por e-mail;
+- Use filtros antispam atualizados;
+- Realize treinamentos de conscientização com funcionários.

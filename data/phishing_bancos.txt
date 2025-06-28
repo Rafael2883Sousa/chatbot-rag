@@ -1,0 +1,3 @@
+
+Bancos são alvos recorrentes de phishing. Os atacantes criam sites que simulam o ambiente bancário real para capturar senhas e números de conta.
+Mensagens SMS com links fraudulentos são uma das táticas mais utilizadas.

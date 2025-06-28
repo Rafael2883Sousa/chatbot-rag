@@ -1,0 +1,6 @@
+
+Existem diversos tipos de phishing:
+- Spear phishing: ataque direcionado a indivíduos específicos;
+- Whaling: ataques voltados a executivos de alto escalão;
+- Vishing: phishing por meio de chamadas telefônicas;
+- Smishing: phishing via mensagens SMS.

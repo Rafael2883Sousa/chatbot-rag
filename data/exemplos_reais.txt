@@ -1,0 +1,3 @@
+
+Em 2021, uma campanha de phishing simulava mensagens da Microsoft pedindo atualização de senha. Milhares de usuários clicaram em links falsos, resultando em roubo de credenciais.
+Outro exemplo ocorreu em 2020, durante a pandemia, com e-mails falsos sobre vacinas da COVID-19.
